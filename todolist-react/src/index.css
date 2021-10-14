@@ -24,3 +24,7 @@ code {
   height: 55px;
   font-size: 1.4rem;
 }
+
+.line-through {
+  text-decoration: line-through;
+}
