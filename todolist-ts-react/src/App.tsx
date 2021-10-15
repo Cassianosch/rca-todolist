@@ -1,8 +1,12 @@
-import { useState } from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import './components/styles/scss/_main.scss';
+import Input from './components/Input';
+import List from './components/List';
 
-const App = () => {
-	const [list, setList] = useState([
+import { listData } from "./interfaces/list";
+
+function App() {
+	const [list, setList] = useState<listData[]>([
 		{
 			id: 1,
 			task: 'Lavar o carro',
@@ -25,7 +29,7 @@ const App = () => {
 		}
 	]);
 	const [inputValue, setInputValue] = useState({});
-	const [editing, setEditing] = useState(false);
+	const [editing, setEditing] = useState<Number>(0);
 
 	const handleAddEditItem = () => {
 		if (!!editing) {
@@ -38,6 +42,7 @@ const App = () => {
 			});
 			setList(allItems);
 			setEditing(false);
+			setInputValue('');
 			return;
 		}
 
@@ -62,25 +67,19 @@ const App = () => {
 	}
 	return (
 		<div className="App">
-			<input onChange={e => setInputValue({ id: Math.floor(Math.random() * (100000)), task: e.target.value })} value={inputValue?.task || ''} />
-			<button onClick={handleAddEditItem}>{!!editing ? 'Update' : 'Add'}</button>
-			{
-				list && (
-					<ul>
-						{list.map((el, i) => (
-							<div key={i}>
-								<li onClick={() => handleClickItem(el)}>
-									<u className={el.checked ? 'line-through' : null}>
-										{el.task}
-									</u>
-								</li>
-								<button onClick={() => handleCheckDoneItem(el.id)}>Done</button>
-								<button onClick={() => handleDeleteInput(el.id)}>Delete</button>
-							</div>
-						))}
-					</ul>
-				)
-			}
+			<h1>TODO List</h1>
+			<Input
+				handleChangeValue={setInputValue}
+				value={inputValue?.task || ''}
+				handleButtonClick={handleAddEditItem}
+				editing={editing}
+			/>
+			<List
+				list={list}
+				handleClickItem={handleClickItem}
+				handleCheckDoneItem={handleCheckDoneItem}
+				handleDeleteInput={handleDeleteInput}
+			/>
 		</div>
 	);
 }
