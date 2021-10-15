@@ -28,8 +28,12 @@ function App() {
 			checked: false
 		}
 	]);
-	const [inputValue, setInputValue] = useState({});
-	const [editing, setEditing] = useState<Number>(0);
+	const [inputValue, setInputValue] = useState<listData>({
+		id: 0,
+		task: '',
+		checked: false
+	});
+	const [editing, setEditing] = useState<number>(0);
 
 	const handleAddEditItem = () => {
 		if (!!editing) {
@@ -41,45 +45,55 @@ function App() {
 				return item;
 			});
 			setList(allItems);
-			setEditing(false);
-			setInputValue('');
+			setEditing(0);
+			setInputValue({
+				id: 0,
+				task: '',
+				checked: false
+			});
 			return;
 		}
 
-		if (inputValue !== '') {
+		if (inputValue.task !== '') {
 			setList(oldA => [...oldA, inputValue])
 		}
-		setInputValue('');
+		setInputValue({
+			id: 0,
+			task: '',
+			checked: false
+		});
 	}
-	const handleClickItem = (el) => {
+	const handleClickItem = (el: listData) => {
 		setEditing(el.id);
 		setInputValue(el);
 	}
-	const handleCheckDoneItem = (idElement) => {
+	const handleCheckDoneItem = (idElement: number) => {
 		const allItems = list.map(item => {
 			if (item.id === idElement) item.checked = !item.checked;
 			return item;
 		});
 		setList(allItems);
 	}
-	const handleDeleteInput = (idElement) => {
+	const handleDeleteInput = (idElement: number) => {
 		setList(oldValues => oldValues.filter(el => el.id !== idElement));
 	}
 	return (
 		<div className="App">
 			<h1>TODO List</h1>
-			<Input
-				handleChangeValue={setInputValue}
-				value={inputValue?.task || ''}
-				handleButtonClick={handleAddEditItem}
-				editing={editing}
-			/>
-			<List
-				list={list}
-				handleClickItem={handleClickItem}
-				handleCheckDoneItem={handleCheckDoneItem}
-				handleDeleteInput={handleDeleteInput}
-			/>
+			<div className="container ">
+				<Input
+					handleChangeValue={setInputValue}
+					value={inputValue?.task || ''}
+					handleButtonClick={handleAddEditItem}
+					editing={editing}
+				/>
+				<List
+					list={list}
+					handleClickItem={handleClickItem}
+					handleCheckDoneItem={handleCheckDoneItem}
+					handleDeleteInput={handleDeleteInput}
+				/>
+			</div>
 		</div>
 	);
 }

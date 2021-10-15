@@ -6,7 +6,7 @@ export interface listData {
 
 export interface listPropsData {
     list: listData[];
-    handleClickItem(el: listData): Promise<void>;
-    handleCheckDoneItem(id: number): Promise<void>;
-    handleDeleteInput(id: number): Promise<void>;
+    handleClickItem: (el: listData) => void;
+    handleCheckDoneItem: (id: number) => void;
+    handleDeleteInput: (id: number) => void;
 }

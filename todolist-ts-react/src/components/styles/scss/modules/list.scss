@@ -1,0 +1,47 @@
+.list {
+    padding: 0 1rem;
+
+    &__item {
+        background-color: $white;
+        margin-bottom: .5rem;
+        padding: 0 1rem;
+        border-radius: 12px;
+        box-shadow: 0px 0px 8px -5px black;
+        display: grid;
+        grid-template-columns: 80px auto 40px;
+        align-items: center;
+        padding: 1rem 0;
+
+    }
+
+    &__title {
+        font-weight: bold;
+        color: $secondary-color-8;
+    }
+
+    &__a--done {
+        background-color: unset;
+        border: none;
+        margin: 0 auto;
+        width: 20px;
+        height: 25px;
+        transition: .3s all ease;
+
+        &.uncheked {
+            background-image: url('../../../../assets/unchecked.svg');
+        }
+
+        &.checked {
+            background-image: url('../../../../assets/checked.svg');
+        }
+    }
+
+    &__a--delete {
+        background-color: unset;
+        border: none;
+        transition: .1s all ease;
+        background-image: url('../../../../assets/delete.svg');
+        width: 20px;
+        height: 25px;
+    }
+}

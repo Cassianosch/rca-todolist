@@ -1,8 +1,8 @@
 import { listData } from "./list";
 
 export interface propsData {
-    handleChangeValue(el: listData): Promise<void>;
+    handleChangeValue: (value: listData) => void;
     value: string;
     handleButtonClick: () => void;
-    editing: string;
+    editing: number;
 }
