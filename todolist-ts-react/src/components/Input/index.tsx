@@ -1,5 +1,3 @@
-import react from "react";
-
 import { propsData } from "../../interfaces/input";
 
 const Input = ({ handleChangeValue, value, handleButtonClick, editing }: propsData) => {

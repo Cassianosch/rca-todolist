@@ -1,5 +1,3 @@
-// import react from "react";
-
 import { listPropsData } from "../../interfaces/list";
 
 const List = ({ list, handleClickItem, handleCheckDoneItem, handleDeleteInput }: listPropsData) => {
