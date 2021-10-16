@@ -5,7 +5,7 @@ import List from './components/List';
 
 import { listData } from "./interfaces/list";
 
-function App() {
+const App = () => {
 	const [list, setList] = useState<listData[]>([
 		{
 			id: 1,
@@ -79,7 +79,7 @@ function App() {
 	}
 	return (
 		<div className="App">
-			<h1>TODO List</h1>
+			<h1 data-testid="title">TODO List</h1>
 			<div className="container ">
 				<Input
 					handleChangeValue={setInputValue}

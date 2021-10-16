@@ -1,9 +1,16 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from './components/test';
 import App from './App';
 
-test('renders learn react link', () => {
+beforeEach(() => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
 });
+describe.skip('App', () => {
+  it('should title to be in the page', () => {
+    expect(screen.queryByTestId("title")).toBeInTheDocument();
+  });
+  it('should components to be in the page', () => {
+    expect(screen.queryByTestId("input-component")).toBeInTheDocument();
+    expect(screen.queryByTestId("list-component")).toBeInTheDocument();
+  });
+})
