@@ -76,6 +76,12 @@ const App = () => {
 	}
 	const handleDeleteInput = (idElement: number) => {
 		setList(oldValues => oldValues.filter(el => el.id !== idElement));
+		setEditing(0);
+		setInputValue({
+			id: 0,
+			task: '',
+			checked: false
+		});
 	}
 	return (
 		<div className="App">

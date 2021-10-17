@@ -17,6 +17,7 @@
     &__title {
         font-weight: bold;
         color: $secondary-color-8;
+        cursor: pointer;
     }
 
     &__a--done {
@@ -26,6 +27,7 @@
         width: 20px;
         height: 25px;
         transition: .3s all ease;
+        cursor: pointer;
 
         &.unchecked {
             background-image: url('../../../../assets/unchecked.svg');
@@ -43,5 +45,6 @@
         background-image: url('../../../../assets/delete.svg');
         width: 20px;
         height: 25px;
+        cursor: pointer;
     }
 }
